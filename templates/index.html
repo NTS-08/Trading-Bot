@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Futures Trading Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Binance Futures Trading Bot</h1>
+            <p class="subtitle">Professional Testnet Trading Interface</p>
+        </header>
+
+        <div class="trading-panel">
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="symbol">Trading Pair</label>
+                    <input type="text" id="symbol" name="symbol" placeholder="BTCUSDT" required>
+                    <small style="color: #666; font-size: 0.85rem; margin-top: 4px; display: block;">
+                        Examples: BTCUSDT, ETHUSDT, BNBUSDT
+                    </small>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="side">Side</label>
+                        <select id="side" name="side" required>
+                            <option value="BUY">BUY</option>
+                            <option value="SELL">SELL</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Order Type</label>
+                        <select id="type" name="type" required>
+                            <option value="MARKET">MARKET</option>
+                            <option value="LIMIT">LIMIT</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" step="0.001" placeholder="0.002" required>
+                    <small style="color: #666; font-size: 0.85rem; margin-top: 4px; display: block;">
+                        Minimum order value: $100 (e.g., 0.002 BTC)
+                    </small>
+                </div>
+
+                <div class="form-group" id="priceGroup" style="display: none;">
+                    <label for="price">Limit Price</label>
+                    <input type="number" id="price" name="price" step="0.01" placeholder="94000">
+                    <small style="color: #666; font-size: 0.85rem; margin-top: 4px; display: block;">
+                        Use a price close to current market price
+                    </small>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    Place Order
+                </button>
+            </form>
+        </div>
+
+        <div id="responsePanel" class="response-panel" style="display: none;">
+            <h3>Order Response</h3>
+            <div id="responseContent"></div>
+        </div>
+
+        
+            
+            <div style="margin-top: 25px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 8px;">
+                <h4 style="color: #856404; margin-bottom: 10px; font-size: 1rem;">Important Notes</h4>
+                <ul style="color: #856404; font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+                    <li><strong>Minimum Order Value:</strong> $100 (e.g., 0.002 BTC at $95k)</li>
+                    <li><strong>Get Testnet Funds:</strong> Login to <a href="https://testnet.binancefuture.com/" target="_blank" style="color: #2a5298;">Binance Futures Testnet</a> and click "Get Test Funds"</li>
+                    <li><strong>LIMIT Price:</strong> Use a price close to current market price (within ~10%)</li>
+                    <li><strong>Valid Symbols:</strong> BTCUSDT, ETHUSDT, BNBUSDT, ADAUSDT, SOLUSDT</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
